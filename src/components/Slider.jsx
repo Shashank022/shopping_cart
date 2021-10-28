@@ -1,7 +1,8 @@
 import { ArrowLeftOutlined, ArrowRightOutlined, Info } from '@material-ui/icons';
 import React from 'react'
 import styled from 'styled-components'
-
+import { useState } from 'react';
+import { sliderItems } from '../pages/data';
 
 const Container = styled.div`
   width: 100%;
@@ -76,27 +77,42 @@ const Button = styled.button`
   cursor: pointer;
 `;
 
+
+
 const Slider = () => {
-    return (
-        <Container>
-            <Arrow direction="left" >
-                <ArrowLeftOutlined/>
-            </Arrow>
-            <Wrapper>
-                <ImgContainer>
-                    <Image src="https://i.ibb.co/0t7fwfr/fashion.jpg"/>
-                </ImgContainer>
-                <InfoContainer>
-                    <Title>SUMMER SALE...</Title>
-                    <Desc>DON'T COMPROMISE ON STYLE..!! GET FLAT 30% OFF THE NEW ARRIVALS</Desc>
-                    <Button>SHOP NOW..</Button>
-                </InfoContainer>
-            </Wrapper>
-            <Arrow direction="right" >
-                <ArrowRightOutlined/>
-            </Arrow>
-        </Container>
-    )
-}
+  const [slideIndex, setSlideIndex] = useState(0);
+  const handleClick = (direction) => {
+    if (direction === "left") {
+      setSlideIndex(slideIndex > 0 ? slideIndex - 1 : 2);
+    } else {
+      setSlideIndex(slideIndex < 2 ? slideIndex + 1 : 0);
+    }
+  };
+
+  return (
+    <Container>
+      <Arrow direction="left" onClick={() => handleClick("left")}>
+        <ArrowLeftOutlined />
+      </Arrow>
+      <Wrapper slideIndex={slideIndex}>
+        {sliderItems.map((item) => (
+          <Slide bg={item.bg} key={item.id}>
+            <ImgContainer>
+              <Image src={item.img} />
+            </ImgContainer>
+            <InfoContainer>
+              <Title>{item.title}</Title>
+              <Desc>{item.desc}</Desc>
+              <Button>SHOW NOW</Button>
+            </InfoContainer>
+          </Slide>
+        ))}
+      </Wrapper>
+      <Arrow direction="right" onClick={() => handleClick("right")}>
+        <ArrowRightOutlined />
+      </Arrow>
+    </Container>
+  );
+};
 
 export default Slider
