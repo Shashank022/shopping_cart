@@ -2,13 +2,12 @@ import { ArrowLeftOutlined, ArrowRightOutlined } from '@material-ui/icons';
 import React from 'react'
 import styled from 'styled-components'
 import { useState } from 'react';
-import { sliderItems } from '../pages/data';
+import { sliderItems } from '../resources/data';
 
 const Container = styled.div`
   width: 100%;
   height: 100vh;
   display: flex;
-  background-color: white;
   position: relative;
   overflow: hidden;
 `;
@@ -60,7 +59,7 @@ const InfoContainer = styled.div`
   padding: 50px;
 `;
 
-const Title = styled.h1`
+const Title = styled.h1` 
     font-size: 70px;
 `;
 const Desc = styled.p`
@@ -83,9 +82,10 @@ const Slider = () => {
   const [slideIndex, setSlideIndex] = useState(0);
   const handleClick = (direction) => {
     if (direction === "left") {
-      setSlideIndex(slideIndex > 0 ? slideIndex - 1 : 2);
+
+      setSlideIndex(slideIndex > 0 ? slideIndex - 1 : 4);
     } else {
-      setSlideIndex(slideIndex < 2 ? slideIndex + 1 : 0);
+      setSlideIndex(slideIndex < 4 ? slideIndex + 1 : 0);
     }
   };
 
