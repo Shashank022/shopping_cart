@@ -1,10 +1,21 @@
-import { Container } from '@material-ui/core'
-import React from 'react'
+import React from 'react';
+import styled from 'styled-components';
+import { categories } from '../resources/data';
+import  CatogoryItem from './CatogoryItem';
+
+const Container = styled.div`
+display: flex;
+padding: 20px;
+justify-content: space-between;
+`;
+
 
 const Catogories = () => {
     return (
         <Container>
-
+            {categories.map(item =>(
+                <CatogoryItem item={item} key={item.id}/>
+            ))}
         </Container>
     )
 }

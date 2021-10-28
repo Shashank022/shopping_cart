@@ -8,7 +8,6 @@ const Container = styled.div`
   width: 100%;
   height: 100vh;
   display: flex;
-  background-color: white;
   position: relative;
   overflow: hidden;
 `;
@@ -60,7 +59,7 @@ const InfoContainer = styled.div`
   padding: 50px;
 `;
 
-const Title = styled.h1`
+const Title = styled.h1` 
     font-size: 70px;
 `;
 const Desc = styled.p`
