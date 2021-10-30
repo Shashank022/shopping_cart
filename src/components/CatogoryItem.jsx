@@ -40,7 +40,7 @@ const Button = styled.button`
     font-weight: 600;
 `;
 
-const CatogoryItem = ({item}) => {
+const CatogoryItem = ({ item }) => {
     return (
         <Container>
             <Image src={item.img}></Image>
